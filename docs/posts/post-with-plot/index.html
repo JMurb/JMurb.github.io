@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -196,13 +162,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>This is a post with a plot.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+<p>One of the interesting projects I worked on was an analysis for the Advanced Spatial Statistics for Urban Applications class. The Pennsylvania legislature advancing a ballot initiative to amend the Constitution of the Commonwealth to prohibit abortion. Knowing that a similar amendment had been made to the Alabama state constitution, I went looking for a multivariable regression model that could explain the outcome. I combined countywide data on religious adherence in 2010 from the Association of Statisticians of American Religious Bodies and the Association of Religion Daily Archives, population demographics, educational attainment, and household data came from the US Census Bureau, &nbsp;income data came from the Federal Reserve Bank of St.&nbsp;Louis, and annual abortion data released by the Center for Health Statistics of the Alabama Department of Health and compiled by the anti-abortion website (johnstonsarchive.net). I performed the analysis in R. The original analysis included tests for spatial autocorrelation.</p>
+<p>The dependent variable measure is (yestotalperc), the percentage of votes cast to amend the constitution. It is not a measure of all eligible voters. Voter turnout in the election was less than 50%. Independent variables incorporated into possible models included the percent of residents who are regular churchgoers (perchurchgo), churchgoers who attend churches affiliated with the Southern Baptist Convention, or SBC, (perccgsobap), churchgoers who are not affiliated with the SBC (perccgnonsobap), the average number of abortions for the years 1998 – 2016 by population by county (avgaborperpop), the percentage of black residents by county (percblack), the percentage of households &nbsp;identifying as female head of household with children – suggesting households run by single-mothers - (percfhhcd), and the percentage of people over 25 with a &nbsp;bachelor's degree or higher (college). Income per capita (percapinc) and other variables were also incorporated into trial models.</p>
+<p>After exploring correlations in the data, I discovered an interesting relationship between two variables. I had assumed that a yes vote would be correlated with church attendance. The religious data broke down religious observance into different religions and Christian denominations. When I made percent of churchgoers affiliated with the Southern Baptist Convention a separate variable, I was not surprised to see it had a strong positive correlation with yestotalperc. What was surprising was the strong negative correlation with yestotalperc that remained for all other churchgoers. Using ggplot, I made a series of scatterplots to visualize the correlations. The correlations are not clear among churchgoers and non-churchgoers.</p>
+<p>![image](image.jpg){width=80%}</p>
+<p>I developed several OLS models using different variables. I recorded the various descriptive statistics in the following table.</p>
+<p>![image](image2.jpg){width=80%}</p>
+<p>It became clear that perccgnonsobap and its complement, perccgbsobap, had less explanatory power than percblack. The most powerful 3 variable model I could develop that kept each variable statistically significant was the following multi-variate model consisting of percblack, avgaborperpop, and college. It has an adjusted R-squared of .8541 and an AIC of -206.564.</p>
+<p>![image](image3.jpg){width=80%}</p>
 
 
 
