@@ -1,0 +1,25 @@
+---
+title: "Joshua Murbarger"
+image: images/linkedinpic.jpg
+about:
+  template: jolla
+  image-width: 20em
+  image-shape: round
+  links:
+    - icon: mastodon
+      text: mastodon
+      href: https://fosstodon.org/@JMurb
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/joshua-murbarger-439962225/
+    - icon: github
+      text: Github
+      href: https://github.com/JMurb
+    - icon: envelope
+      text: Contact me
+      href: mailto:joshua.murbarger@gmail.com
+---
+
+My name is Josh.
+
+I'm a candidate in the Master's in Geospatial Data Science program at Temple University. This is my portfolio blank. 
