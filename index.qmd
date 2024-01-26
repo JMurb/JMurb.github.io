@@ -1,5 +1,6 @@
 ---
 title: "Joshua Murbarger"
+navbar: 
 image: images/linkedinpic.jpg
 about:
   template: jolla
@@ -19,7 +20,7 @@ about:
       text: Contact me
       href: mailto:joshua.murbarger@gmail.com
 ---
+I'm a candidate in the Master's program in Geospatial Data Science at Temple University.\
 
-My name is Josh.
-
-I'm a candidate in the Master's in Geospatial Data Science program at Temple University. This is my portfolio blank. 
+This is my portfolio.\
+It is under construction. 

@@ -1,12 +1,93 @@
 ---
-title: "Projects"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+
 ---
+
+## Redistricting Plan Scorer to Compare Compactness, Contiguity, Partisan Fairness, and Population Equality
+
+::: columns
+::: {.column width="40%"}
+![](images/RedistrictingPlanGui.png)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+Our team built a tool to score proposed congressional redistricting plans on several state legislature and Constitutionally-mandated criteria, including population equality, compactness, and partisan fairness. I coded the GUI in pyQT and was responsible for the partisan fairness tests. *[- link -](/posts/gee-post/){target="_blank"}*
+:::
+:::
+
+## Analysis of Atmospheric River Effects in California 2023 Using LANDSAT and Sentinel-1
+
+::: columns
+::: {.column width="55%"}
+I studied the effects of an "atmospheric river" in early 2023 that left at least 23 people dead in California. The analysis was conducted using python, geemap, and jupyter notebook. Normalized Difference Water Index (NDWI) using LANDSAT imagery and Synthetic Aperture Radar (SAR) data from Sentinel-1 were used to calculate standing water left by the event. *[- link -](/posts/gee-post/){target="_blank"}*
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](images/bothlandsat.png)
+:::
+:::
+
+## Machine Learning Land-use Classification in scikit-learn
+
+::: columns
+::: {.column width="40%"}
+![](images/ML1.png)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+I created satellite imagery labels and and trained a machine learning model to classify land use in Baltimore. In this first iteration, the goal was to distinguish between high and medium density residential housing. *[- link -](/posts/gee-post/){target="_blank"}*
+:::
+:::
+
+## Using Building Renovation Permit Applications as Leading Indicators for Property Crimes
+
+::: columns
+::: {.column width="55%"}
+In another analysis, I looked for correlations between the number of building renovation permits filed with the Bureau of Licenses and Inspections and the frequency of reported property crimes in several South Philadelphia neighborhoods. I was interested to see whether permits could be used as a leading indicator. *[- link -](/posts/gee-post/){target="_blank"}*
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](images/hotspot.png)
+:::
+:::
+
+## Predicting the Alabama State Constitutional Amendment Vote
+
+::: columns
+::: {.column width="40%"}
+![](images/AL1.png)
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="55%"}
+In another project, I built a multivariable regression model in R to predict the election outcome of a ballot initiative that amended the Alabama State Constitution. *[- link -](/posts/gee-post/){target="_blank"}*
+:::
+:::
+
+## Demonstrating K-Means Clustering with Behavioral Risk Factor Surveillance System and CDC Gun Death Data
+
+::: columns
+::: {.column width="55%"}
+As part of a student-led tutorial, I demonstrated the implementation and optimization of K-Means clustering using BRFSS and CDC gun death data. Rates of gun ownership closely correlate with gun deaths.Pictured are 4 clusters of states. An interesting follow-up question is whether the clusters have similar levels of firearm regulation. *[- link -](/posts/gee-post/){target="_blank"}*
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="40%"}
+![](images/kmeans.png)
+:::
+:::

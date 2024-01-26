@@ -3,18 +3,23 @@ project:
   output-dir: docs
 
 website:
-  title: "Portfolio"
-  navbar:
+  title: ""
+  navbar: 
     left:
-      - text: Home
+      - text: "-"
         href: index.qmd
       - text: Projects
         href: projects.qmd
       - text: Résumé
         href: resume.qmd
-    
+      - text: Blog
+        href: blog.qmd
+      - text: About
+        href: index.qmd
+        
     right:
-      - about.qmd
+      - text: About
+        href: about.qmd
       - icon: github
         href: https://github.com/
       - icon: twitter
@@ -22,7 +27,9 @@ website:
 format:
   html:
     theme: cosmo
-    css: styles.css
+    toc: true
+    css: style/styles.scss
+
 
 editor: visual
 

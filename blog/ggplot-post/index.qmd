@@ -1,0 +1,47 @@
+---
+title: "Sample Project"
+author: "Joshua Murbarger"
+date: "2024-08-10"
+categories: [news, code, analysis]
+image: "image.jpg"
+---
+
+One of the interesting projects I worked on was an analysis for the Advanced Spatial Statistics for Urban Applications class. The Pennsylvania legislature advancing a ballot initiative to amend the Constitution of the Commonwealth to prohibit abortion. Knowing that a similar amendment had been made to the Alabama state constitution, I went looking for a multivariable regression model that could explain the outcome. I combined countywide data on religious adherence in 2010 from the Association of Statisticians of American Religious Bodies and the Association of Religion Daily Archives, population demographics, educational attainment, and household data came from the US Census Bureau,  income data came from the Federal Reserve Bank of St. Louis, and annual abortion data released by the Center for Health Statistics of the Alabama Department of Health and compiled by the anti-abortion website (johnstonsarchive.net). I performed the analysis in R. The original analysis included tests for spatial autocorrelation.
+
+```{r}
+#| column: screen-inset-shaded
+#| layout-nrow: 1
+
+plot(cars)
+plot(iris)
+plot(pressure)
+```
+
+![](image.jpg){width="80%"}
+
+I developed several OLS models using different variables. I recorded the various descriptive statistics in the following table.
+
+![](image2.jpg){width="80%"}
+
+It became clear that perccgnonsobap and its complement, perccgbsobap, had less explanatory power than percblack. The most powerful 3 variable model I could develop that kept each variable statistically significant was the following multi-variate [This is a span that has the calss aside which places it in the margin without a footnote.]{.aside}
+
+model consisting of percblack, avgaborperpop, and college. It has an adjusted R-squared of .8541 and an AIC of -206.564.
+
+```{r}
+#| label: fig-mtcars
+#| fig-cap: "MPG vs horsepower, colored by transmission."
+#| column: margin
+
+library(ggplot2)
+mtcars2 <- mtcars
+mtcars2$am <- factor(
+  mtcars$am, labels = c('automatic', 'manual')
+)
+options(options(repr.plot.width = 5, repr.plot.height =2))
+ggplot(mtcars2, aes(hp, mpg, color = am)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "loess") +
+  theme(legend.position = 'bottom')
+```
+
+![](image3.jpg){width="80%"}

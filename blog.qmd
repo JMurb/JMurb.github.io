@@ -1,0 +1,20 @@
+---
+navbar: 
+listing:
+  contents: blog
+  sort: "date desc"
+  type: default
+  categories: false
+  sort-ui: false
+  filter-ui: false
+format:
+  html:
+    page-layout: full
+    grid: 
+      sidebar-width: 150px
+      body-width: 900px
+      margin-width: 450px
+      gutter-width: 3rem
+    css: style/styles.scss
+title-block-banner: true
+---

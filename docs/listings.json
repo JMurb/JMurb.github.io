@@ -1,8 +1,10 @@
 [
   {
-    "listing": "/projects.html",
+    "listing": "/blog.html",
     "items": [
-      "/posts/post-with-plot/index.html"
+      "/blog/gee-post/index.html",
+      "/blog/ggplot-post/index.html",
+      "/blog/trial-post/index.html"
     ]
   }
 ]
