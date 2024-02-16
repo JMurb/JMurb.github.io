@@ -1,17 +1,31 @@
 [
   {
-    "objectID": "posts/ml-post/index.html",
-    "href": "posts/ml-post/index.html",
+    "objectID": "posts/al-post/index.html",
+    "href": "posts/al-post/index.html",
+    "title": "Sample Project",
+    "section": "",
+    "text": "Capstone Journal - Sprint 1.\n\nStem Map Automation\n-modifications\n\nField Map Automation"
+  },
+  {
+    "objectID": "PortfolioScratchFolder/JMurb.github.io-main/resume.html",
+    "href": "PortfolioScratchFolder/JMurb.github.io-main/resume.html",
+    "title": "",
+    "section": "",
+    "text": "&lt;iframe width=“800” height=“800” src=“images/resume.pdf”&gt; &lt;/iframe&gt;"
+  },
+  {
+    "objectID": "PortfolioScratchFolder/JMurb.github.io-main/posts/post-with-plot/index.html",
+    "href": "PortfolioScratchFolder/JMurb.github.io-main/posts/post-with-plot/index.html",
     "title": "Sample Project",
     "section": "",
     "text": "One of the interesting projects I worked on was an analysis for the Advanced Spatial Statistics for Urban Applications class. The Pennsylvania legislature advancing a ballot initiative to amend the Constitution of the Commonwealth to prohibit abortion. Knowing that a similar amendment had been made to the Alabama state constitution, I went looking for a multivariable regression model that could explain the outcome. I combined countywide data on religious adherence in 2010 from the Association of Statisticians of American Religious Bodies and the Association of Religion Daily Archives, population demographics, educational attainment, and household data came from the US Census Bureau,  income data came from the Federal Reserve Bank of St. Louis, and annual abortion data released by the Center for Health Statistics of the Alabama Department of Health and compiled by the anti-abortion website (johnstonsarchive.net). I performed the analysis in R. The original analysis included tests for spatial autocorrelation.\nThe dependent variable measure is (yestotalperc), the percentage of votes cast to amend the constitution. It is not a measure of all eligible voters. Voter turnout in the election was less than 50%. Independent variables incorporated into possible models included the percent of residents who are regular churchgoers (perchurchgo), churchgoers who attend churches affiliated with the Southern Baptist Convention, or SBC, (perccgsobap), churchgoers who are not affiliated with the SBC (perccgnonsobap), the average number of abortions for the years 1998 – 2016 by population by county (avgaborperpop), the percentage of black residents by county (percblack), the percentage of households  identifying as female head of household with children – suggesting households run by single-mothers - (percfhhcd), and the percentage of people over 25 with a  bachelor’s degree or higher (college). Income per capita (percapinc) and other variables were also incorporated into trial models.\nAfter exploring correlations in the data, I discovered an interesting relationship between two variables. I had assumed that a yes vote would be correlated with church attendance. The religious data broke down religious observance into different religions and Christian denominations. When I made percent of churchgoers affiliated with the Southern Baptist Convention a separate variable, I was not surprised to see it had a strong positive correlation with yestotalperc. What was surprising was the strong negative correlation with yestotalperc that remained for all other churchgoers. Using ggplot, I made a series of scatterplots to visualize the correlations. The correlations are not clear among churchgoers and non-churchgoers.\n\nI developed several OLS models using different variables. I recorded the various descriptive statistics in the following table.\n\nIt became clear that perccgnonsobap and its complement, perccgbsobap, had less explanatory power than percblack. The most powerful 3 variable model I could develop that kept each variable statistically significant was the following multi-variate model consisting of percblack, avgaborperpop, and college. It has an adjusted R-squared of .8541 and an AIC of -206.564."
   },
   {
-    "objectID": "posts/al-post/index.html",
-    "href": "posts/al-post/index.html",
-    "title": "Sample Project",
+    "objectID": "PortfolioScratchFolder/JMurb.github.io-main/about.html",
+    "href": "PortfolioScratchFolder/JMurb.github.io-main/about.html",
+    "title": "About",
     "section": "",
-    "text": "One of the interesting projects I worked on was an analysis for the Advanced Spatial Statistics for Urban Applications class. The Pennsylvania legislature advancing a ballot initiative to amend the Constitution of the Commonwealth to prohibit abortion. Knowing that a similar amendment had been made to the Alabama state constitution, I went looking for a multivariable regression model that could explain the outcome. I combined countywide data on religious adherence in 2010 from the Association of Statisticians of American Religious Bodies and the Association of Religion Daily Archives, population demographics, educational attainment, and household data came from the US Census Bureau,  income data came from the Federal Reserve Bank of St. Louis, and annual abortion data released by the Center for Health Statistics of the Alabama Department of Health and compiled by the anti-abortion website (johnstonsarchive.net). I performed the analysis in R. The original analysis included tests for spatial autocorrelation.\nThe dependent variable measure is (yestotalperc), the percentage of votes cast to amend the constitution. It is not a measure of all eligible voters. Voter turnout in the election was less than 50%. Independent variables incorporated into possible models included the percent of residents who are regular churchgoers (perchurchgo), churchgoers who attend churches affiliated with the Southern Baptist Convention, or SBC, (perccgsobap), churchgoers who are not affiliated with the SBC (perccgnonsobap), the average number of abortions for the years 1998 – 2016 by population by county (avgaborperpop), the percentage of black residents by county (percblack), the percentage of households  identifying as female head of household with children – suggesting households run by single-mothers - (percfhhcd), and the percentage of people over 25 with a  bachelor’s degree or higher (college). Income per capita (percapinc) and other variables were also incorporated into trial models.\nAfter exploring correlations in the data, I discovered an interesting relationship between two variables. I had assumed that a yes vote would be correlated with church attendance. The religious data broke down religious observance into different religions and Christian denominations. When I made percent of churchgoers affiliated with the Southern Baptist Convention a separate variable, I was not surprised to see it had a strong positive correlation with yestotalperc. What was surprising was the strong negative correlation with yestotalperc that remained for all other churchgoers. Using ggplot, I made a series of scatterplots to visualize the correlations. The correlations are not clear among churchgoers and non-churchgoers.\n\nI developed several OLS models using different variables. I recorded the various descriptive statistics in the following table.\n\nIt became clear that perccgnonsobap and its complement, perccgbsobap, had less explanatory power than percblack. The most powerful 3 variable model I could develop that kept each variable statistically significant consisted of percblack, avgaborperpop, and college. It has an adjusted R-squared of .8541."
+    "text": "About this blog"
   },
   {
     "objectID": "blog.html",
@@ -56,11 +70,46 @@
     "text": "I’m a candidate in the Master’s program in Geospatial Data Science at Temple University.\n\nThis is my portfolio.\nIt is under construction."
   },
   {
-    "objectID": "posts/gee-post/index.html",
-    "href": "posts/gee-post/index.html",
-    "title": "Sample Project",
+    "objectID": "PortfolioScratchFolder/JMurb.github.io-main/index.html",
+    "href": "PortfolioScratchFolder/JMurb.github.io-main/index.html",
+    "title": "Joshua Murbarger",
     "section": "",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac mauris dolor. Fusce semper sem a accumsan porta. Maecenas lobortis est nec erat mollis, a molestie libero facilisis. Nulla eu dolor bibendum arcu varius aliquet. Praesent sagittis urna at ante pellentesque consequat. Phasellus euismod rhoncus tellus, vel mollis leo tempor non. Curabitur eu iaculis sem. Phasellus eleifend sem sit amet arcu aliquet aliquam. Donec auctor faucibus lectus fringilla fermentum. Maecenas nisi odio, porta molestie sapien nec, gravida interdum enim. Ut cursus augue tincidunt mauris rutrum fringilla. Mauris placerat mi viverra vulputate aliquet.\nCurabitur efficitur diam justo. Morbi et aliquam velit. Nunc ultrices fermentum ligula in egestas. Proin sagittis est lacus, mollis hendrerit ex interdum aliquam. Pellentesque sit amet neque ut urna porttitor faucibus faucibus sagittis arcu. Quisque at felis gravida, egestas purus id, tincidunt risus. Proin sit amet dui in dolor egestas pretium. Nullam vestibulum placerat dolor, vitae venenatis purus mattis et. Sed quam nulla, ultrices eu imperdiet eu, elementum dignissim eros.\nNulla auctor efficitur felis, rutrum luctus orci. In laoreet purus ac justo tristique convallis. Vestibulum dapibus gravida quam vitae pharetra. Nam sodales arcu eu condimentum blandit. Nulla a turpis quis ante dictum aliquam. Morbi a faucibus metus. Vivamus gravida nulla enim, in molestie velit hendrerit nec. Cras quis nisl nisi. Nulla faucibus, velit sed tempor faucibus, dolor purus malesuada magna, in interdum neque tellus vitae diam.\nCras a turpis eget neque molestie tempus id sit amet orci. In consequat sapien arcu, at bibendum leo auctor vel. Aliquam venenatis maximus metus, at maximus mi. Nullam eget consectetur dolor. Suspendisse scelerisque ut diam sed elementum. Pellentesque ultricies magna at ex vehicula, et convallis mi porta. Mauris feugiat felis vel lorem auctor, vel fermentum orci blandit. Nunc vestibulum cursus est, nec blandit felis varius eu. Curabitur ac nibh bibendum, pretium nunc eu, tristique felis. Aliquam efficitur gravida gravida.\nSuspendisse lacus quam, fermentum quis facilisis interdum, rutrum sit amet mauris. Morbi dapibus mollis interdum. Praesent quis convallis orci, sit amet tristique dolor. Nunc nunc nisl, imperdiet sed enim ut, hendrerit cursus nunc. Phasellus rutrum sapien eget erat elementum varius. Integer vitae enim faucibus, fringilla magna non, pharetra leo. Maecenas velit erat, vestibulum vitae placerat sed, fringilla quis lorem.\n\nI developed several OLS models using different variables. I recorded the various descriptive statistics in the following table.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac mauris dolor. Fusce semper sem a accumsan porta. Maecenas lobortis est nec erat mollis, a molestie libero facilisis. Nulla eu dolor bibendum arcu varius aliquet. Praesent sagittis urna at ante pellentesque consequat. Phasellus euismod rhoncus tellus, vel mollis leo tempor non. Curabitur eu iaculis sem. Phasellus eleifend sem sit amet arcu aliquet aliquam. Donec auctor faucibus lectus fringilla fermentum. Maecenas nisi odio, porta molestie sapien nec, gravida interdum enim. Ut cursus augue tincidunt mauris rutrum fringilla. Mauris placerat mi viverra vulputate aliquet.\nCurabitur efficitur diam justo. Morbi et aliquam velit. Nunc ultrices fermentum ligula in egestas. Proin sagittis est lacus, mollis hendrerit ex interdum aliquam. Pellentesque sit amet neque ut urna porttitor faucibus faucibus sagittis arcu. Quisque at felis gravida, egestas purus id, tincidunt risus. Proin sit amet dui in dolor egestas pretium. Nullam vestibulum placerat dolor, vitae venenatis purus mattis et. Sed quam nulla, ultrices eu imperdiet eu, elementum dignissim eros.\nNulla auctor efficitur felis, rutrum luctus orci. In laoreet purus ac justo tristique convallis. Vestibulum dapibus gravida quam vitae pharetra. Nam sodales arcu eu condimentum blandit. Nulla a turpis quis ante dictum aliquam. Morbi a faucibus metus. Vivamus gravida nulla enim, in molestie velit hendrerit nec. Cras quis nisl nisi. Nulla faucibus, velit sed tempor faucibus, dolor purus malesuada magna, in interdum neque tellus vitae diam.\nCras a turpis eget neque molestie tempus id sit amet orci. In consequat sapien arcu, at bibendum leo auctor vel. Aliquam venenatis maximus metus, at maximus mi. Nullam eget consectetur dolor. Suspendisse scelerisque ut diam sed elementum. Pellentesque ultricies magna at ex vehicula, et convallis mi porta. Mauris feugiat felis vel lorem auctor, vel fermentum orci blandit. Nunc vestibulum cursus est, nec blandit felis varius eu. Curabitur ac nibh bibendum, pretium nunc eu, tristique felis. Aliquam efficitur gravida gravida.\nSuspendisse lacus quam, fermentum quis facilisis interdum, rutrum sit amet mauris. Morbi dapibus mollis interdum. Praesent quis convallis orci, sit amet tristique dolor. Nunc nunc nisl, imperdiet sed enim ut, hendrerit cursus nunc. Phasellus rutrum sapien eget erat elementum varius. Integer vitae enim faucibus, fringilla magna non, pharetra leo. Maecenas velit erat, vestibulum vitae placerat sed, fringilla quis lorem."
+    "text": "My name is Josh.\nI’m a candidate in the Master’s in Geospatial Data Science program at Temple University. This is my portfolio blank."
+  },
+  {
+    "objectID": "PortfolioScratchFolder/JMurb.github.io-main/projects.html",
+    "href": "PortfolioScratchFolder/JMurb.github.io-main/projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Sample Project\n\n\n\n\n\n\n\n\n\n\n\n\nAug 10, 2024\n\n\nJoshua Murbarger\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "PortfolioScratchFolder/projects.html",
+    "href": "PortfolioScratchFolder/projects.html",
+    "title": "",
+    "section": "",
+    "text": "I created satellite imagery labels and and trained a machine learning model to classify land use in Baltimore. In this first iteration, the goal was to distinguish between high and medium density residential housing. Check it out"
+  },
+  {
+    "objectID": "PortfolioScratchFolder/projects.html#machine-learning-land-use-classification-in-scikit-learn",
+    "href": "PortfolioScratchFolder/projects.html#machine-learning-land-use-classification-in-scikit-learn",
+    "title": "",
+    "section": "",
+    "text": "I created satellite imagery labels and and trained a machine learning model to classify land use in Baltimore. In this first iteration, the goal was to distinguish between high and medium density residential housing. Check it out"
+  },
+  {
+    "objectID": "PortfolioScratchFolder/projects.html#analysis-of-atmospheric-river-effects-in-california-2023-using-landsat-and-sentinel-1",
+    "href": "PortfolioScratchFolder/projects.html#analysis-of-atmospheric-river-effects-in-california-2023-using-landsat-and-sentinel-1",
+    "title": "",
+    "section": "Analysis of Atmospheric River Effects in California 2023 Using LANDSAT and Sentinel-1",
+    "text": "Analysis of Atmospheric River Effects in California 2023 Using LANDSAT and Sentinel-1\n\n\nUsing NASA datasets from the Google Earth Engine repository, the analysis calculated changes in surface water and saturated soil after severe flooding caused by phenomena dubbed “atmospheric rivers” caused levee breaches, property damage, and left at least 23 people dead. It utilized an open source python module called geemap, a set of python wrappers to facilitate scripts written in jupyter notebooks to be passed back and forth to Earth Engine via the python-api and displayed within the notebook. Calculations included the Normalized Difference Water Index (NDWI) using LANDSAT imagery and Synthetic Aperture Radar (SAR) data from Sentinel-1. Check it out"
+  },
+  {
+    "objectID": "PortfolioScratchFolder/projects.html#predicting-the-alabama-state-constitutional-amendment-vote",
+    "href": "PortfolioScratchFolder/projects.html#predicting-the-alabama-state-constitutional-amendment-vote",
+    "title": "",
+    "section": "Predicting the Alabama State Constitutional Amendment Vote",
+    "text": "Predicting the Alabama State Constitutional Amendment Vote\n\n\n\n\n\n\nOne of the projects I worked on was an analysis for the Advanced Spatial Statistics for Urban Applications class. The Pennsylvania legislature advancing a ballot initiative to amend the Constitution of the Commonwealth to prohibit abortion. Knowing that a similar amendment had been made to the Alabama state constitution, I went looking for a multivariable regression model that could explain the outcome. I combined statewide county data on religious adherence in 2010 from the Association of Statisticians of American Religious Bodies and the Association of Religion Daily Archives, population demographics, educational attainment, and household data came from the US Census Bureau, income data came from the Federal Reserve Bank of St. Louis, and annual abortion data released by the Center for Health Statistics of the Alabama Department of Health and compiled by the anti-abortion website (johnstonsarchive.net). I performed the analysis in R.Check it out"
   },
   {
     "objectID": "projects.html#redistricting-plan-scorer-to-compare-compactness-contiguity-partisan-fairness-and-population-equality",

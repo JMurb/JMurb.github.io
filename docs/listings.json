@@ -6,5 +6,11 @@
       "/blog/ggplot-post/index.html",
       "/blog/trial-post/index.html"
     ]
+  },
+  {
+    "listing": "/PortfolioScratchFolder/JMurb.github.io-main/projects.html",
+    "items": [
+      "/PortfolioScratchFolder/JMurb.github.io-main/posts/post-with-plot/index.html"
+    ]
   }
 ]

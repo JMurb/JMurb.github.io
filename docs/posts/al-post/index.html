@@ -166,14 +166,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>One of the interesting projects I worked on was an analysis for the Advanced Spatial Statistics for Urban Applications class. The Pennsylvania legislature advancing a ballot initiative to amend the Constitution of the Commonwealth to prohibit abortion. Knowing that a similar amendment had been made to the Alabama state constitution, I went looking for a multivariable regression model that could explain the outcome. I combined countywide data on religious adherence in 2010 from the Association of Statisticians of American Religious Bodies and the Association of Religion Daily Archives, population demographics, educational attainment, and household data came from the US Census Bureau, &nbsp;income data came from the Federal Reserve Bank of St.&nbsp;Louis, and annual abortion data released by the Center for Health Statistics of the Alabama Department of Health and compiled by the anti-abortion website (johnstonsarchive.net). I performed the analysis in R. The original analysis included tests for spatial autocorrelation.</p>
-<p>The dependent variable measure is (yestotalperc), the percentage of votes cast to amend the constitution. It is not a measure of all eligible voters. Voter turnout in the election was less than 50%. Independent variables incorporated into possible models included the percent of residents who are regular churchgoers (perchurchgo), churchgoers who attend churches affiliated with the Southern Baptist Convention, or SBC, (perccgsobap), churchgoers who are not affiliated with the SBC (perccgnonsobap), the average number of abortions for the years 1998 – 2016 by population by county (avgaborperpop), the percentage of black residents by county (percblack), the percentage of households &nbsp;identifying as female head of household with children – suggesting households run by single-mothers - (percfhhcd), and the percentage of people over 25 with a &nbsp;bachelor’s degree or higher (college). Income per capita (percapinc) and other variables were also incorporated into trial models.</p>
-<p>After exploring correlations in the data, I discovered an interesting relationship between two variables. I had assumed that a yes vote would be correlated with church attendance. The religious data broke down religious observance into different religions and Christian denominations. When I made percent of churchgoers affiliated with the Southern Baptist Convention a separate variable, I was not surprised to see it had a strong positive correlation with yestotalperc. What was surprising was the strong negative correlation with yestotalperc that remained for all other churchgoers. Using ggplot, I made a series of scatterplots to visualize the correlations. The correlations are not clear among churchgoers and non-churchgoers.</p>
-<p><img src="image.jpg" class="img-fluid" style="width:80.0%"></p>
-<p>I developed several OLS models using different variables. I recorded the various descriptive statistics in the following table.</p>
-<p><img src="image2.jpg" class="img-fluid" style="width:80.0%"></p>
-<p>It became clear that perccgnonsobap and its complement, perccgbsobap, had less explanatory power than percblack. The most powerful 3 variable model I could develop that kept each variable statistically significant consisted of percblack, avgaborperpop, and college. It has an adjusted R-squared of .8541.</p>
-<p><img src="image3.jpg" class="img-fluid" style="width:80.0%"></p>
+<p>Capstone Journal - Sprint 1.<br>
+</p>
+<p>Stem Map Automation</p>
+<p>-modifications</p>
+<p><br>
+Field Map Automation<br>
+</p>
 
 
 
