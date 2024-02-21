@@ -9,7 +9,7 @@
 <meta name="author" content="Joshua Murbarger">
 <meta name="dcterms.date" content="2023-02-20">
 
-<title>Sprint 1 Recap</title>
+<title>Sprint 0 Recap</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -140,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sprint 1 Recap</h1>
+<h1 class="title">Sprint 0 Recap</h1>
   <div class="quarto-categories">
     <div class="quarto-category">news</div>
     <div class="quarto-category">code</div>
@@ -174,7 +174,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>My capstone project involves automating the essential components of a forestry data start-up’s GIS pipeline. The pipeline breaks down into three major stages. The first stage of the pipeline involves formatting client-provided data during the intake process. Clients usually provide a shapefile of forest stands. The shapefile usually includes unique identifiers the client uses to track age and development of timber assests. It may be provided in a state plane coordinate system. It must be reprojected to the World Geodetic System EPSG:4326 and be formatted with several startup specific fields to faciliate data collection and processing. In most cases, the next step is running a plot sampling script to randomly select sample plots in the stand according to the customers sampling methodology. Occasionally, clients provide an additional pointfile of centerpoints for plots they wish to be use for sampling. The basic workflow is to copy the customer data and reproject the copies to EPSG:4326, create a geopackage layer, add field values individually via a field calculator in QGIS, map client-named fields to their internal field schema by hand and use the field calculator to populate the values, run the sampling algorithm, create new fields in the newly-formed plots layer, bundle all of the new layers into a single geopackage and upload them to a designated folder on AWS.</p>
+<p>My capstone project involves automating the essential components of a forestry data startup’s GIS pipeline. The pipeline breaks down into three major stages. The first stage of the pipeline involves the formatting and processing of client-provided data during the intake process. Clients usually provide a shapefile of forest stands. The shapefile usually includes unique identifiers the client uses to track age and development of timber assests. It may be provided in a state plane coordinate system that must then be reprojected to the World Geodetic System EPSG:4326 used by the startup and formatted with several startup specific fields to faciliate data collection and processing. In most cases, the next step is running a plot sampling script to randomly select sample plots in the stand according to the customers sampling methodology. Occasionally, clients provide an additional pointfile of centerpoints for plots they wish to be used for sampling. The basic workflow is to copy the customer data and reproject the copies to EPSG:4326, create a geopackage layer, add field values individually via a field calculator in QGIS, map client-named fields to their internal field schema by hand and use the field calculator to populate the values, run the sampling algorithm, create new fields in the newly-formed plots layer, bundle all of the new layers into a single geopackage and upload them to a designated folder on AWS.</p>
+<p>The next step of the GIS pipeline is turning the resulting geopackage from step one into a Web Map available to the forestry professionals on the startup’s Edge team. These foresters, or their contractors, work in the field to gather the data using backpacks mounted with 2 360-degree cameras LiDAR sensors. Collected data is processed in the startup’s Philadelphia facility to extract forest metrics and create digital twins of the sample plots. As the Edge team is often far from a reliable wi-fi signal, the startup uses ESRI’s Field Maps, which is an offline data collection tool in ArcGIS Online (AGOL) that will sync with the online Web Map when a wi-fi connection is re-established.</p>
+<p>Several steps must be taken to make the geopackage available to the Edge team on AGOL. It is uploaded to the service and shared to the relevant parties. The ‘plots’ layer is made editable by the ‘cruisers’, and the attachment of images and comments is enabled. Special settings that allow the layer to sync correctly need to be set. The startup also desires a consistent symbology to be used. Also, the topographic contours indicating elevation change are downloaded from the USGS website and added as a layer to the map. These contours are delivered in 1 x 1 degree tiles and are usually far larger than the area of interest to the foresters. Their size makes the packaging of offline areas inconvenient or impossible, so they are clipped to the stand areas with a small added buffer to facilitate planning approach.</p>
+<p>The final stage of the startup’s GIS pipeline is the creation of a client deliverable Stem Map. This is a Web Map displayed via Instant App link on the startup’s ArcGIS Enterprise portal. After data collection and processing, the geolocated trees, their metrics, tree images, and plot videos are served to the client. As this data is hosted on an Enterprise server, rather than AGOL, the upload, group sharing, and attachments must all be made separately.</p>
 <p>The initial days of Sprint 1 were spent finishing up the first draft of the Stem Map script to include sharing and group creation. The bulk of the work was spent on the development of the Field Map script.</p>
 
 
