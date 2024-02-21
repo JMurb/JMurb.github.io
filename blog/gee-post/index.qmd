@@ -1,30 +1,11 @@
 ---
-title: "Sample Project"
+title: "Sprint 1 Recap"
 author: "Joshua Murbarger"
-date: "2024-08-10"
+date: "2023-02-20"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida tempus mi sit amet porttitor. Duis porta velit tristique justo tincidunt, ac commodo mauris consequat. Donec nunc elit, tincidunt ut arcu ut, vestibulum tristique velit^1^.
-[ ^1^ This is a span that has the class aside which places it in the margin without a footnote number.]{.aside}
+My capstone project involves automating the essential components of a forestry data start-up's GIS pipeline. The pipeline breaks down into three major stages. The first stage of the pipeline involves formatting client-provided data during the intake process. Clients usually provide a shapefile of forest stands. The shapefile usually includes unique identifiers the client uses to track age and development of timber assests. It may be provided in a state plane coordinate system. It must be reprojected to the World Geodetic System EPSG:4326 and be formatted with several startup specific fields to faciliate data collection and processing. In most cases, the next step is running a plot sampling script to randomly select sample plots in the stand according to the customers sampling methodology. Occasionally, clients provide an additional pointfile of centerpoints for plots they wish to be use for sampling. The basic workflow is to copy the customer data and reproject the copies to EPSG:4326, create a geopackage layer, add field values individually via a field calculator in QGIS, map client-named fields to their internal field schema by hand and use the field calculator to populate the values, run the sampling algorithm, create new fields in the newly-formed plots layer, bundle all of the new layers into a single geopackage and upload them to a designated folder on AWS.
 
-Integer tincidunt dolor nec bibendum lacinia. Donec eleifend consectetur augue, eu ornare mi molestie vel. Praesent
-
-::: column-margin
-We know from *the first fundamental theorem of calculus* that for $x$ in $[a, b]$:
-$$\frac{d}{dx}\left( \int_{a}^{x} f(u)\,du\right)=f(x).$$
-:::
-tincidunt, urna quis malesuada tincidunt, est ex dapibus mauris, vitae blandit orci leo eu diam. Aliquam ornare posuere tellus, in lacinia est bibendum a. In vitae augue et tortor aliquet
-
-maximus accumsan vitae ante. Nam sollicitudin justo velit, vitae vestibulum sapien pellentesque non. Phasellus efficitur nisl mi, a ullamcorper magna facilisis at. Duis viverra elementum dictum. Praesent finibus nec mauris sit amet fringilla. Nulla pretium facilisis felis, at posuere ligula gravida quis. Donec sagittis sem vitae est iaculis, sed placerat magna lobortis. Praesent tempor imperdiet gravida. Aliquam vitae velit ac purus rhoncus luctus vel id justo.
-
-![](image.jpg){width="80%"}
-
-I developed several OLS models using different variables. I recorded the various descriptive statistics in the following table.
-
-![](image2.jpg){width="80%"}
-
-It became clear that perccgnonsobap and its complement, perccgbsobap, had less explanatory power than percblack. The most powerful 3 variable model I could develop that kept each variable statistically significant was the following multi-variate model consisting of percblack, avgaborperpop, and college. It has an adjusted R-squared of .8541 and an AIC of -206.564.
-
-![](image3.jpg){width="80%"}
+The initial days of Sprint 1 were spent finishing up the first draft of the Stem Map script to include sharing and group creation. The bulk of the work was spent on the development of the Field Map script.
