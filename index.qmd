@@ -7,9 +7,6 @@ about:
   image-width: 20em
   image-shape: round
   links:
-    - icon: mastodon
-      text: mastodon
-      href: https://fosstodon.org/@JMurb
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/joshua-murbarger-439962225/
@@ -20,7 +17,8 @@ about:
       text: Contact me
       href: mailto:joshua.murbarger@gmail.com
 ---
+
 I'm a candidate in the Master's program in Geospatial Data Science at Temple University.\
 
 This is my portfolio.\
-It is under construction. 
+It is under construction.

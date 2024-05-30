@@ -28,11 +28,18 @@
     "text": "Sprint 0 Recap\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nJoshua Murbarger\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "projects.html#transmission-line-inspector",
+    "href": "projects.html#transmission-line-inspector",
+    "title": "",
+    "section": "Transmission Line Inspector",
+    "text": "Transmission Line Inspector\n\n\nI built a tool for my employer to visualize potential tree strike areas and inspect tree health along high-voltage power lines. The tool employs 360 degree equirectangular imagery displayed via ESRI’s new Oriented Imagery viewer in ArcGIS Online. Trees identified as potential hazards can be inspected by the client from multiple viewpoints in order to ascertain whether field inspection was warranted. - link -"
+  },
+  {
     "objectID": "projects.html#redistricting-plan-scorer-to-compare-compactness-contiguity-partisan-fairness-and-population-equality",
     "href": "projects.html#redistricting-plan-scorer-to-compare-compactness-contiguity-partisan-fairness-and-population-equality",
     "title": "",
     "section": "Redistricting Plan Scorer to Compare Compactness, Contiguity, Partisan Fairness, and Population Equality",
-    "text": "Redistricting Plan Scorer to Compare Compactness, Contiguity, Partisan Fairness, and Population Equality\n\n\n\n\n\n\nOur team built a tool to score proposed congressional redistricting plans on several state legislature and Constitutionally-mandated criteria, including population equality, compactness, and partisan fairness. I coded the GUI in pyQT and was responsible for the partisan fairness tests. - link -"
+    "text": "Redistricting Plan Scorer to Compare Compactness, Contiguity, Partisan Fairness, and Population Equality\n\n\n\n\n\n\nOur team built a tool to score proposed congressional redistricting plans on several state legislature and Constitutionally-mandated criteria, including population equality, compactness, and partisan fairness. I coded the GUI in pyQT and was responsible for the partisan fairness tests. - link-"
   },
   {
     "objectID": "projects.html#analysis-of-atmospheric-river-effects-in-california-2023-using-landsat-and-sentinel-1",
