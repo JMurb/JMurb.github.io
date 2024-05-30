@@ -32,7 +32,7 @@
     "href": "projects.html#transmission-line-inspector",
     "title": "",
     "section": "Transmission Line Inspector",
-    "text": "Transmission Line Inspector\n\n\nI built a tool for my employer to visualize potential tree strike areas and inspect tree health along high-voltage power lines. The tool employs 360 degree equirectangular imagery displayed via ESRI’s new Oriented Imagery viewer in ArcGIS Online. Trees identified as potential hazards can be inspected by the client from multiple viewpoints in order to ascertain whether field inspection was warranted. - link -"
+    "text": "Transmission Line Inspector\n\n\nI built a tool for my employer to visualize potential tree strike areas and inspect tree health along high-voltage power lines. The tool employs 360 degree equirectangular imagery displayed via ESRI’s new Oriented Imagery viewer in ArcGIS Online. Trees identified as potential hazards can be examined by the client from multiple viewpoints in order to ascertain whether additional field inspection is warranted. - link -"
   },
   {
     "objectID": "projects.html#redistricting-plan-scorer-to-compare-compactness-contiguity-partisan-fairness-and-population-equality",

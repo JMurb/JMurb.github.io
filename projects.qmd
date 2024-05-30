@@ -6,14 +6,14 @@
 
 ::: columns
 ::: {.column width="55%"}
-I built a tool for my employer to visualize potential tree strike areas and inspect tree health along high-voltage power lines. The tool employs 360 degree equirectangular imagery displayed via ESRI's new Oriented Imagery viewer in ArcGIS Online. Trees identified as potential hazards can be inspected by the client from multiple viewpoints in order to ascertain whether field inspection was warranted. [*- link -*](/posts/gee-post/){target="_blank"}
+I built a tool for my employer to visualize potential tree strike areas and inspect tree health along high-voltage power lines. The tool employs 360 degree equirectangular imagery displayed via ESRI's new Oriented Imagery viewer in ArcGIS Online. Trees identified as potential hazards can be examined by the client from multiple viewpoints in order to ascertain whether additional field inspection is warranted. [*- link -*](https://www.youtube.com/watch?v=G64Da3BCdu0){target="_blank"}
 :::
 
 ::: {.column width="5%"}
 :::
 
 ::: {.column width="40%"}
-![](images/bothlandsat.png)
+![](images/TIThumb.jpg)
 :::
 :::
 
