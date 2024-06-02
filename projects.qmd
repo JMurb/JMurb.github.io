@@ -1,12 +1,11 @@
 ---
 
 ---
-
 ## Transmission Line Inspector
 
 ::: columns
 ::: {.column width="55%"}
-I built a tool to visualize potential tree strike areas and inspect tree health along high-voltage power lines. The tool employs 360 degree equirectangular imagery displayed via ESRI's new Oriented Imagery viewer in ArcGIS Online. Trees identified as potential hazards can be examined by the client from multiple viewpoints in order to ascertain whether additional field inspection is warranted. [*- link -*](https://www.youtube.com/watch?v=G64Da3BCdu0){target="_blank"}
+I built a tool to visualize potential tree strike areas and inspect tree health along high-voltage power lines. The tool employs 360° equirectangular imagery displayed via ESRI's new Oriented Imagery viewer in ArcGIS Online. Trees identified as potential hazards can be examined by the client from multiple viewpoints in order to ascertain whether additional field inspection is warranted. [*- link to youtube demo -*](https://www.youtube.com/watch?v=G64Da3BCdu0){target="_blank"}
 :::
 
 ::: {.column width="5%"}
@@ -28,7 +27,7 @@ I built a tool to visualize potential tree strike areas and inspect tree health 
 :::
 
 ::: {.column width="55%"}
-Our team built a tool to score proposed congressional redistricting plans on several state legislature and Constitutionally-mandated criteria, including population equality, compactness, and partisan fairness. I coded the GUI in pyQT and was responsible for the partisan fairness tests. [*- link-*](/posts/gee-post/){target="_blank"}
+In GIS App Development, our two-person team built a tool to score proposed congressional redistricting plans on several state legislature and Constitutionally-mandated criteria, including population equality, compactness, and partisan fairness. I coded the GUI in pyQT5 and was responsible for the partisan fairness tests. [*- link-*](/posts/gee-post/){target="_blank"}
 :::
 :::
 
@@ -36,7 +35,7 @@ Our team built a tool to score proposed congressional redistricting plans on sev
 
 ::: columns
 ::: {.column width="55%"}
-I studied the effects of an "atmospheric river" in early 2023 that left at least 23 people dead in California. The analysis was conducted using python, geemap, and jupyter notebook. Normalized Difference Water Index (NDWI) using LANDSAT imagery and Synthetic Aperture Radar (SAR) data from Sentinel-1 were used to calculate standing water left by the event. [*- link -*](/posts/gee-post/){target="_blank"}
+I studied the effects of an "atmospheric river" in early 2023 that left at least 23 people dead in California. The analysis was conducted using Python, geemap, and jupyter notebook. Normalized Difference Water Index (NDWI) using LANDSAT imagery and Synthetic Aperture Radar (SAR) data from Sentinel-1 were used to calculate standing water left by the event. [*- link -*](/posts/gee-post/){target="_blank"}
 :::
 
 ::: {.column width="5%"}
@@ -96,7 +95,7 @@ In another project, I built a multivariable regression model in R to predict the
 
 ::: columns
 ::: {.column width="55%"}
-As part of a student-led tutorial, I demonstrated the implementation and optimization of K-Means clustering using BRFSS and CDC gun death data. Rates of gun ownership closely correlate with gun deaths.Pictured are 4 clusters of states. An interesting follow-up question is whether the clusters have similar levels of firearm regulation. [*- link -*](/posts/gee-post/){target="_blank"}
+I demonstrated the implementation and optimization of K-Means clustering using gun ownership data from BRFSS and CDC gun death data. Rates of gun ownership closely correlate with gun deaths. Pictured are 4 clusters of states. An interesting follow-up question is whether the clusters have similar levels of firearm regulation. [*- link -*](/posts/gee-post/){target="_blank"}
 :::
 
 ::: {.column width="5%"}
