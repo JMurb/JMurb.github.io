@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joshua Murbarger">
-<meta name="dcterms.date" content="2023-02-20">
+<meta name="dcterms.date" content="2024-07-24">
 
-<title>Sprint 0 Recap</title>
+<title>Viz-a-day</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -41,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -136,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sprint 0 Recap</h1>
+<h1 class="title">Viz-a-day</h1>
   <div class="quarto-categories">
     <div class="quarto-category">news</div>
     <div class="quarto-category">code</div>
@@ -158,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 20, 2023</p>
+      <p class="date">July 24, 2024</p>
     </div>
   </div>
   
@@ -170,13 +207,190 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>My capstone project involves automating the essential components of a forestry data startup’s GIS pipeline. The pipeline breaks down into three major stages. The first stage of the pipeline involves the formatting and processing of client-provided data during the intake process. Clients usually provide a shapefile of forest stands. The shapefile usually includes unique identifiers the client uses to track age and development of timber assests. It may be provided in a state plane coordinate system that must then be reprojected to the World Geodetic System EPSG:4326 used by the startup and formatted with several startup specific fields to faciliate data collection and processing. In most cases, the next step is running a plot sampling script to randomly select sample plots in the stand according to the customers sampling methodology. Occasionally, clients provide an additional pointfile of centerpoints for plots they wish to be used for sampling. The basic workflow is to copy the customer data and reproject the copies to EPSG:4326, create a geopackage layer, add field values individually via a field calculator in QGIS, map client-named fields to their internal field schema by hand and use the field calculator to populate the values, run the sampling algorithm, create new fields in the newly-formed plots layer, bundle all of the new layers into a single geopackage and upload them to a designated folder on AWS.</p>
-<p>The next step of the GIS pipeline is turning the resulting geopackage from step one into a Web Map available to the forestry professionals on the startup’s Edge team. These foresters, or their contractors, work in the field to gather the data using backpacks mounted with 2 360-degree cameras LiDAR sensors. Collected data is processed in the startup’s Philadelphia facility to extract forest metrics and create digital twins of the sample plots. As the Edge team is often far from a reliable wi-fi signal, the startup uses ESRI’s Field Maps, which is an offline data collection tool in ArcGIS Online (AGOL) that will sync with the online Web Map when a wi-fi connection is re-established.</p>
-<p>Several steps must be taken to make the geopackage available to the Edge team on AGOL. It is uploaded to the service and shared to the relevant parties. The ‘plots’ layer is made editable by the ‘cruisers’, and the attachment of images and comments is enabled. Special settings that allow the layer to sync correctly need to be set. The startup also desires a consistent symbology to be used. Also, the topographic contours indicating elevation change are downloaded from the USGS website and added as a layer to the map. These contours are delivered in 1 x 1 degree tiles and are usually far larger than the area of interest to the foresters. Their size makes the packaging of offline areas inconvenient or impossible, so they are clipped to the stand areas with a small added buffer to facilitate planning approach.</p>
-<p>The final stage of the startup’s GIS pipeline is the creation of a client deliverable Stem Map. This is a Web Map displayed via Instant App link on the startup’s ArcGIS Enterprise portal. After data collection and processing, the geolocated trees, their metrics, tree images, and plot videos are served to the client. As this data is hosted on an Enterprise server, rather than AGOL, the upload, group sharing, and attachments must all be made separately.</p>
-<p>The initial days of Sprint 1 were spent finishing up the first draft of the Stem Map script to include sharing and group creation. The bulk of the work was spent on the development of the Field Map script.</p>
+<p>In order to hone my skills at dataviz creation in matplotlib and ggplot2, I’ve been replicating interesting charts I see in the news. I’ve been noticing more horizontal stacked bar charts in articles on news sites. I’m guessing the horizontal construction plays better with screens and, if the chart is presenting minimal information, like the answer to a survey question, it breaks up or grounds the columnar format nicely. Here’s an example from a recent publication from the Kaiser Family Foundation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../images/kff_original.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Original"><img src="../../images/kff_original.jpg" class="img-fluid figure-img" alt="Original"></a></p>
+<figcaption>Original</figcaption>
+</figure>
+</div>
+<p>Unfortunately, matplotlib doesn’t seem play nicely with legend labeling. I spent several hours trying to tweak different forms of this chart using different tutorials. My first attempt was the following:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>category_names <span class="op">=</span> [<span class="st">'A lot'</span>, <span class="st">'Some'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'Not too much'</span>, <span class="st">'Not at all'</span>]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>category_colors <span class="op">=</span> [ <span class="st">'#001e36'</span>,<span class="st">'#004a87'</span>, <span class="st">'#00b588'</span>, <span class="st">'#1a7563'</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Total Democratic women voters'</span>: [<span class="dv">49</span>, <span class="dv">33</span>, <span class="dv">13</span>, <span class="dv">5</span>],</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'18-29'</span>: [<span class="dv">27</span>, <span class="dv">47</span>, <span class="dv">22</span>, <span class="dv">4</span>],</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'30-49'</span>: [<span class="dv">41</span>, <span class="dv">36</span>, <span class="dv">14</span>, <span class="dv">9</span>],</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'50-64'</span>: [<span class="dv">56</span>, <span class="dv">26</span>, <span class="dv">12</span>, <span class="dv">6</span>],</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'65+'</span>: [<span class="dv">66</span>, <span class="dv">27</span>, <span class="dv">7</span>, <span class="dv">0</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> survey(results, category_names):</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">    results : dict</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">        A mapping from question labels to a list of answers per category.</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">        It is assumed all lists contain the same number of entries and that</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">        it matches the length of *category_names*.</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">    category_names : list of str</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">        The category labels.</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> <span class="bu">list</span>(results.keys())</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> np.array(<span class="bu">list</span>(results.values()))</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    data_cum <span class="op">=</span> data.cumsum(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">#     category_colors = plt.colormaps['RdYlGn'](</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">#         np.linspace(0.15, 0.85, data.shape[1]))</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="fl">9.2</span>, <span class="dv">5</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    ax.invert_yaxis()</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    ax.xaxis.set_visible(<span class="va">False</span>)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="dv">0</span>, np.<span class="bu">sum</span>(data, axis<span class="op">=</span><span class="dv">1</span>).<span class="bu">max</span>())</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (colname, color) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(category_names, category_colors)):</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        widths <span class="op">=</span> data[:, i]</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        starts <span class="op">=</span> data_cum[:, i] <span class="op">-</span> widths</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        rects <span class="op">=</span> ax.barh(labels, widths, left<span class="op">=</span>starts, height<span class="op">=</span><span class="fl">0.5</span>,</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                        label<span class="op">=</span>colname, color<span class="op">=</span>color)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        text_color <span class="op">=</span> <span class="st">'white'</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        ax.bar_label(rects, label_type<span class="op">=</span><span class="st">'center'</span>, fmt <span class="op">=</span> <span class="st">"%.0f</span><span class="sc">%%</span><span class="st">"</span>, padding<span class="op">=-</span><span class="dv">8</span>, weight<span class="op">=</span><span class="st">'bold'</span>, color<span class="op">=</span>text_color)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    ax.legend(ncols<span class="op">=</span><span class="bu">len</span>(category_names), bbox_to_anchor<span class="op">=</span>(<span class="op">-</span><span class="fl">.29</span>, <span class="dv">1</span>), loc<span class="op">=</span><span class="st">'lower left'</span>, fontsize<span class="op">=</span><span class="st">'small'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    ax.text(x<span class="op">=-</span><span class="fl">.09</span>, y<span class="op">=</span><span class="dv">1</span>, s<span class="op">=</span><span class="st">"How much, if at all, do you trust Vice President Kamala Harris to speak about abortion policy?"</span>, transform<span class="op">=</span>fig.transFigure, ha<span class="op">=</span><span class="st">'left'</span>, fontsize<span class="op">=</span><span class="dv">13</span>, alpha<span class="op">=</span><span class="fl">.8</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>survey(results, category_names)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Which yielded this.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../images/kff_attempt1.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="First attempt"><img src="../../images/kff_attempt1.jpg" class="img-fluid figure-img" alt="First attempt"></a></p>
+<figcaption>First attempt</figcaption>
+</figure>
+</div>
+<p>Next, I tried</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dataframe</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'A lot'</span>: [<span class="dv">49</span>,<span class="dv">27</span>,<span class="dv">41</span>,<span class="dv">56</span>,<span class="dv">66</span>],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Some'</span>: [<span class="dv">33</span>,<span class="dv">47</span>,<span class="dv">36</span>,<span class="dv">26</span>,<span class="dv">27</span>],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Not too much'</span>: [<span class="dv">13</span>,<span class="dv">22</span>,<span class="dv">14</span>,<span class="dv">12</span>,<span class="dv">7</span>],</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'Not at all'</span>: [<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">0</span>]},</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                   index<span class="op">=</span>[<span class="st">'Total Democratic Women Voters'</span>, <span class="st">'18-29'</span>, <span class="st">'30-49'</span>, <span class="st">'50-64'</span>, <span class="st">'65+'</span>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># get the totals for each row</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>totals <span class="op">=</span> df.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the percent for each row</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>percent <span class="op">=</span> df.div(totals, axis<span class="op">=</span><span class="dv">0</span>).mul(<span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># create the plot</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> percent.plot(kind<span class="op">=</span><span class="st">'barh'</span>, stacked<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>), color<span class="op">=</span>[<span class="st">'#001e36'</span>,<span class="st">'#004a87'</span>, <span class="st">'#00b588'</span>, <span class="st">'#1a7563'</span>], xticks<span class="op">=</span>[])</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># move the legend</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, ncol<span class="op">=</span><span class="dv">4</span>, frameon<span class="op">=</span><span class="va">False</span>, bbox_to_anchor<span class="op">=</span>(<span class="op">-</span><span class="fl">.5</span>, <span class="fl">1.1</span>))</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># remove ticks</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>ax.tick_params(left<span class="op">=</span><span class="va">False</span>, bottom<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># remove all spines</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>ax.spines[[<span class="st">'top'</span>, <span class="st">'bottom'</span>, <span class="st">'left'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># iterate through each container</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> ax.containers:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># custom label calculates percent and add an empty string so 0 value bars don't have a number</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> [<span class="ss">f'</span><span class="sc">{</span>w<span class="sc">:0.0f}</span><span class="ss">%'</span> <span class="cf">if</span> (w <span class="op">:=</span> v.get_width()) <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">''</span> <span class="cf">for</span> v <span class="kw">in</span> c]</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add annotations</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    ax.bar_label(c, labels<span class="op">=</span>labels, weight<span class="op">=</span><span class="st">'bold'</span>, label_type<span class="op">=</span><span class="st">'center'</span>, padding<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'w'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This improved the labels on the bar, but didn’t help with the y-axis labels or legend mat size.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../images/kff_attempt2.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="Second attempt"><img src="../../images/kff_attempt2.jpg" class="img-fluid figure-img" alt="Second attempt"></a></p>
+<figcaption>Second attempt</figcaption>
+</figure>
+</div>
+<p>In my final matplotlib attempt, I tried to tweak the rc_params.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>category_names <span class="op">=</span> [<span class="st">'A lot'</span>, <span class="st">'Some'</span>,<span class="st">'Not too much'</span>, <span class="st">'Not at all'</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> {<span class="st">'65+'</span>: [<span class="dv">66</span>, <span class="dv">27</span>, <span class="dv">7</span>, <span class="dv">0</span>],</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>           <span class="st">'50-64'</span>: [<span class="dv">56</span>, <span class="dv">26</span>, <span class="dv">12</span>, <span class="dv">6</span>],</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>           <span class="st">'30-49'</span>: [<span class="dv">41</span>, <span class="dv">36</span>, <span class="dv">14</span>, <span class="dv">9</span>],</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>           <span class="st">'18-29'</span>: [<span class="dv">27</span>, <span class="dv">47</span>, <span class="dv">22</span>, <span class="dv">4</span>],</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>           <span class="st">'White'</span>: [<span class="dv">50</span>,<span class="dv">35</span>,<span class="dv">10</span>,<span class="dv">5</span>],</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Hispanic'</span>: [<span class="dv">42</span>,<span class="dv">31</span>,<span class="dv">20</span>,<span class="dv">7</span>],</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Black'</span>: [<span class="dv">51</span>,<span class="dv">25</span>,<span class="dv">18</span>,<span class="dv">6</span>],</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>           <span class="st">'Total Democratic Women Voters'</span>: [<span class="dv">49</span>, <span class="dv">33</span>, <span class="dv">13</span>, <span class="dv">5</span>]}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># setup dataframe using the dict provided in the OP</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results, index<span class="op">=</span>category_names)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># transpose df from the OP so Party is the in the columns and Ward is the index</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>dft <span class="op">=</span> df.T</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df.T.plot.barh(stacked<span class="op">=</span><span class="va">True</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>), color<span class="op">=</span>[<span class="st">'#001e36'</span>,<span class="st">'#004a87'</span>, <span class="st">'#00b588'</span>, <span class="st">'#1a7563'</span>])</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span>(<span class="op">-</span><span class="fl">.365</span>,<span class="fl">1.03</span>), ncol<span class="op">=</span><span class="dv">4</span>, frameon<span class="op">=</span><span class="va">False</span>, markerscale<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>SMALL_SIZE <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>MEDIUM_SIZE <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>BIGGER_SIZE <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'font'</span>, size<span class="op">=</span>BIGGER_SIZE)          <span class="co"># controls default text sizes</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'axes'</span>, titlesize<span class="op">=</span>SMALL_SIZE)     <span class="co"># fontsize of the axes title</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'axes'</span>, labelsize<span class="op">=</span>MEDIUM_SIZE)    <span class="co"># fontsize of the x and y labels</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'xtick'</span>, labelsize<span class="op">=</span>SMALL_SIZE)    <span class="co"># fontsize of the tick labels</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'ytick'</span>, labelsize<span class="op">=</span>MEDIUM_SIZE)    <span class="co"># fontsize of the tick labels</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'legend'</span>, fontsize<span class="op">=</span>BIGGER_SIZE)    <span class="co"># legend fontsize</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>plt.rc(<span class="st">'figure'</span>, titlesize<span class="op">=</span>BIGGER_SIZE)  <span class="co"># fontsize of the figure title</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>plt.rcParams[<span class="st">'xtick.top'</span>] <span class="op">=</span> plt.rcParams[<span class="st">'xtick.labeltop'</span>] <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>ax.set_yticklabels(results.keys(), ha <span class="op">=</span> <span class="st">'left'</span>)              <span class="co"># Set horizontal alignment to left</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_tick_params(pad<span class="op">=</span><span class="dv">200</span>,            <span class="co"># Pad tick labels so they don't go over y-axis</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                         labelsize<span class="op">=</span><span class="dv">11</span>,       <span class="co"># Set label size</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                         bottom<span class="op">=</span><span class="va">False</span>, top<span class="op">=</span><span class="va">False</span>)       <span class="co"># Set no ticks on bottom/left</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># annotations:</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> ax.containers:</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># format the number of decimal places and replace 0 with an empty string</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> [<span class="ss">f'</span><span class="sc">{</span>w<span class="sc">:.0f}</span><span class="ss">%'</span> <span class="cf">if</span> (w <span class="op">:=</span> v.get_width()) <span class="op">&gt;</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">''</span> <span class="cf">for</span> v <span class="kw">in</span> c ]</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    ax.bar_label(c, labels<span class="op">=</span>labels,label_type<span class="op">=</span><span class="st">'center'</span>, color<span class="op">=</span><span class="st">'w'</span>, weight<span class="op">=</span><span class="st">'bold'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Which put the y-axis labels where I wanted, but I still couldn’t figure out the mat changes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../images/kff_attempt3.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Third attempt"><img src="../../images/kff_attempt3.jpg" class="img-fluid figure-img" alt="Third attempt"></a></p>
+<figcaption>Third attempt</figcaption>
+</figure>
+</div>
+<p>
+</p><p>I finally gave up and tried using <a href="https://flourish.studio/">Flourish</a>, a dataviz product. I wasn’t familiar with it, but going down the rabbit hole looking for solutions, I found it recommended by an Al-Jazeera datalab journalist. Here’s the product.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../../images/kff_flourish.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5" title="Using Flourish"><img src="../../images/kff_flourish.jpg" class="img-fluid figure-img" alt="Using Flourish"></a></p>
+<figcaption>Using Flourish</figcaption>
+</figure>
+</div>
+<p>
+</p><p>Later, I’ll see if I can learn more fixing those legend values.</p>
 
 
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Original</span>
+<span class="glightbox-desc lightbox-desc-2">First attempt</span>
+<span class="glightbox-desc lightbox-desc-3">Second attempt</span>
+<span class="glightbox-desc lightbox-desc-4">Third attempt</span>
+<span class="glightbox-desc lightbox-desc-5">Using Flourish</span>
+</div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -567,6 +781,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 

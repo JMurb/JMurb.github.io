@@ -1,17 +1,179 @@
 ---
-title: "Sprint 0 Recap"
+title: "Viz-a-day"
 author: "Joshua Murbarger"
-date: "2023-02-20"
+date: "2024-07-24"
 categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
-My capstone project involves automating the essential components of a forestry data startup's GIS pipeline. The pipeline breaks down into three major stages. The first stage of the pipeline involves the formatting and processing of client-provided data during the intake process. Clients usually provide a shapefile of forest stands. The shapefile usually includes unique identifiers the client uses to track age and development of timber assests. It may be provided in a state plane coordinate system that must then be reprojected to the World Geodetic System EPSG:4326 used by the startup and formatted with several startup specific fields to faciliate data collection and processing. In most cases, the next step is running a plot sampling script to randomly select sample plots in the stand according to the customers sampling methodology. Occasionally, clients provide an additional pointfile of centerpoints for plots they wish to be used for sampling. The basic workflow is to copy the customer data and reproject the copies to EPSG:4326, create a geopackage layer, add field values individually via a field calculator in QGIS, map client-named fields to their internal field schema by hand and use the field calculator to populate the values, run the sampling algorithm, create new fields in the newly-formed plots layer, bundle all of the new layers into a single geopackage and upload them to a designated folder on AWS.
+In order to hone my skills at dataviz creation in matplotlib and ggplot2, I've been replicating interesting charts I see in the news. I've been noticing more horizontal stacked bar charts in articles on news sites. I'm guessing the horizontal construction plays better with screens and, if the chart is presenting minimal information, like the answer to a survey question, it breaks up or grounds the columnar format nicely. Here's an example from a recent publication from the Kaiser Family Foundation.
 
-The next step of the GIS pipeline is turning the resulting geopackage from step one into a Web Map available to the forestry professionals on the startup's Edge team. These foresters, or their contractors, work in the field to gather the data using backpacks mounted with 2 360-degree cameras LiDAR sensors. Collected data is processed in the startup's Philadelphia facility to extract forest metrics and create digital twins of the sample plots. As the Edge team is often far from a reliable wi-fi signal, the startup uses ESRI's Field Maps, which is an offline data collection tool in ArcGIS Online (AGOL) that will sync with the online Web Map when a wi-fi connection is re-established.
+![Original](../../images/kff_original.jpg){.lightbox}
 
-Several steps must be taken to make the geopackage available to the Edge team on AGOL. It is uploaded to the service and shared to the relevant parties. The 'plots' layer is made editable by the 'cruisers', and the attachment of images and comments is enabled. Special settings that allow the layer to sync correctly need to be set. The startup also desires a consistent symbology to be used. Also, the topographic contours indicating elevation change are downloaded from the USGS website and added as a layer to the map. These contours are delivered in 1 x 1 degree tiles and are usually far larger than the area of interest to the foresters. Their size makes the packaging of offline areas inconvenient or impossible, so they are clipped to the stand areas with a small added buffer to facilitate planning approach.
 
-The final stage of the startup's GIS pipeline is the creation of a client deliverable Stem Map. This is a Web Map displayed via Instant App link on the startup's ArcGIS Enterprise portal. After data collection and processing, the geolocated trees, their metrics, tree images, and plot videos are served to the client. As this data is hosted on an Enterprise server, rather than AGOL, the upload, group sharing, and attachments must all be made separately.
+Unfortunately, matplotlib doesn't seem play nicely with legend labeling. I spent several hours trying to tweak different forms of this chart using different tutorials. My first attempt was the following:
 
-The initial days of Sprint 1 were spent finishing up the first draft of the Stem Map script to include sharing and group creation. The bulk of the work was spent on the development of the Field Map script.
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+category_names = ['A lot', 'Some',
+                  'Not too much', 'Not at all']
+category_colors = [ '#001e36','#004a87', '#00b588', '#1a7563']
+results = {
+    'Total Democratic women voters': [49, 33, 13, 5],
+    '18-29': [27, 47, 22, 4],
+    '30-49': [41, 36, 14, 9],
+    '50-64': [56, 26, 12, 6],
+    '65+': [66, 27, 7, 0]
+
+}
+
+
+def survey(results, category_names):
+    """
+    Parameters
+    ----------
+    results : dict
+        A mapping from question labels to a list of answers per category.
+        It is assumed all lists contain the same number of entries and that
+        it matches the length of *category_names*.
+    category_names : list of str
+        The category labels.
+    """
+    labels = list(results.keys())
+
+    data = np.array(list(results.values()))
+    data_cum = data.cumsum(axis=1)
+#     category_colors = plt.colormaps['RdYlGn'](
+#         np.linspace(0.15, 0.85, data.shape[1]))
+
+    fig, ax = plt.subplots(figsize=(9.2, 5))
+    ax.invert_yaxis()
+    ax.xaxis.set_visible(False)
+    ax.set_xlim(0, np.sum(data, axis=1).max())
+
+    for i, (colname, color) in enumerate(zip(category_names, category_colors)):
+        widths = data[:, i]
+        starts = data_cum[:, i] - widths
+        rects = ax.barh(labels, widths, left=starts, height=0.5,
+                        label=colname, color=color)
+        
+
+        text_color = 'white'
+        ax.bar_label(rects, label_type='center', fmt = "%.0f%%", padding=-8, weight='bold', color=text_color)
+    ax.legend(ncols=len(category_names), bbox_to_anchor=(-.29, 1), loc='lower left', fontsize='small')
+    ax.text(x=-.09, y=1, s="How much, if at all, do you trust Vice President Kamala Harris to speak about abortion policy?", transform=fig.transFigure, ha='left', fontsize=13, alpha=.8)
+    
+
+
+
+survey(results, category_names)
+plt.show()
+```
+Which yielded this. 
+
+![First attempt](../../images/kff_attempt1.jpg){.lightbox}
+
+Next, I tried
+
+```python
+import pandas as pd
+
+# dataframe
+df = pd.DataFrame({'A lot': [49,27,41,56,66],
+                   'Some': [33,47,36,26,27],
+                   'Not too much': [13,22,14,12,7],
+                   'Not at all': [5,9,8,6,0]},
+                   index=['Total Democratic Women Voters', '18-29', '30-49', '50-64', '65+'])
+
+# get the totals for each row
+totals = df.sum(axis=1)
+
+# calculate the percent for each row
+percent = df.div(totals, axis=0).mul(100).round(2)
+
+# create the plot
+ax = percent.plot(kind='barh', stacked=True, figsize=(9, 5), color=['#001e36','#004a87', '#00b588', '#1a7563'], xticks=[])
+# move the legend
+ax.legend(loc='upper left', ncol=4, frameon=False, bbox_to_anchor=(-.5, 1.1))
+
+# remove ticks
+ax.tick_params(left=False, bottom=True)
+# remove all spines
+ax.spines[['top', 'bottom', 'left', 'right']].set_visible(False)
+
+# iterate through each container
+for c in ax.containers:
+    
+    # custom label calculates percent and add an empty string so 0 value bars don't have a number
+    labels = [f'{w:0.0f}%' if (w := v.get_width()) > 0 else '' for v in c]
+    
+    # add annotations
+    ax.bar_label(c, labels=labels, weight='bold', label_type='center', padding=1, color='w')
+```
+This improved the labels on the bar, but didn't help with the y-axis labels or legend mat size.
+
+![Second attempt](../../images/kff_attempt2.jpg){.lightbox}
+
+In my final matplotlib attempt, I tried to tweak the rc_params. 
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+category_names = ['A lot', 'Some','Not too much', 'Not at all']
+results = {'65+': [66, 27, 7, 0],
+           '50-64': [56, 26, 12, 6],
+           '30-49': [41, 36, 14, 9],
+           '18-29': [27, 47, 22, 4],
+           'White': [50,35,10,5],
+           'Hispanic': [42,31,20,7],
+           'Black': [51,25,18,6],
+           'Total Democratic Women Voters': [49, 33, 13, 5]}
+
+# setup dataframe using the dict provided in the OP
+df = pd.DataFrame(results, index=category_names)
+# transpose df from the OP so Party is the in the columns and Ward is the index
+dft = df.T
+# plot
+ax = df.T.plot.barh(stacked=True, figsize=(10, 6), color=['#001e36','#004a87', '#00b588', '#1a7563'])
+
+ax.legend(loc=(-.365,1.03), ncol=4, frameon=False, markerscale=12)
+SMALL_SIZE = 8
+MEDIUM_SIZE = 10
+BIGGER_SIZE = 12
+
+plt.rc('font', size=BIGGER_SIZE)          # controls default text sizes
+plt.rc('axes', titlesize=SMALL_SIZE)     # fontsize of the axes title
+plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('ytick', labelsize=MEDIUM_SIZE)    # fontsize of the tick labels
+plt.rc('legend', fontsize=BIGGER_SIZE)    # legend fontsize
+plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
+plt.rcParams['xtick.top'] = plt.rcParams['xtick.labeltop'] = False
+ax.set_yticklabels(results.keys(), ha = 'left')              # Set horizontal alignment to left
+ax.yaxis.set_tick_params(pad=200,            # Pad tick labels so they don't go over y-axis
+                         labelsize=11,       # Set label size
+                         bottom=False, top=False)       # Set no ticks on bottom/left
+
+# annotations:
+for c in ax.containers:
+    
+    # format the number of decimal places and replace 0 with an empty string
+    labels = [f'{w:.0f}%' if (w := v.get_width()) > 0 else '' for v in c ]
+    
+    ax.bar_label(c, labels=labels,label_type='center', color='w', weight='bold')
+```
+
+Which put the y-axis labels where I wanted, but I still couldn't figure out the mat changes. 
+
+![Third attempt](../../images/kff_attempt3.jpg){.lightbox}
+
+<p>
+I finally gave up and tried using [Flourish](https://flourish.studio/), a dataviz product. I wasn't familiar with it, but going down the rabbit hole looking for solutions, I found it recommended by an Al-Jazeera datalab journalist. Here's the product. 
+
+![Using Flourish](../../images/kff_flourish.jpg){.lightbox}
+
+<p>
+Later, I'll see if I can learn more fixing those legend values.
