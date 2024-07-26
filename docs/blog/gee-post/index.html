@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In order to hone my skills at dataviz creation in matplotlib and ggplot2, I’ve been replicating interesting charts I see in the news. I’ve been noticing more horizontal stacked bar charts in articles on news sites. I’m guessing the horizontal construction plays better with screens and, if the chart is presenting minimal information, like the answer to a survey question, it breaks up or grounds the columnar format nicely. Here’s an example from a recent publication from the Kaiser Family Foundation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../images/kff_original.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Original"><img src="../../images/kff_original.jpg" class="img-fluid figure-img" alt="Original"></a></p>
+<p><a href="../../images/kff_original.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Original"><img src="../../images/kff_original.jpg" class="img-fluid figure-img" alt="Original"></a></p>
 <figcaption>Original</figcaption>
 </figure>
 </div>
@@ -274,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Which yielded this.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../images/kff_attempt1.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="First attempt"><img src="../../images/kff_attempt1.jpg" class="img-fluid figure-img" alt="First attempt"></a></p>
+<p><a href="../../images/kff_attempt1.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="First attempt"><img src="../../images/kff_attempt1.jpg" class="img-fluid figure-img" alt="First attempt"></a></p>
 <figcaption>First attempt</figcaption>
 </figure>
 </div>
@@ -315,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This improved the labels on the bar, but didn’t help with the y-axis labels or legend mat size.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../images/kff_attempt2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="Second attempt"><img src="../../images/kff_attempt2.jpg" class="img-fluid figure-img" alt="Second attempt"></a></p>
+<p><a href="../../images/kff_attempt2.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="Second attempt"><img src="../../images/kff_attempt2.jpg" class="img-fluid figure-img" alt="Second attempt"></a></p>
 <figcaption>Second attempt</figcaption>
 </figure>
 </div>
@@ -368,7 +368,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Which put the y-axis labels where I wanted, but I still couldn’t figure out the mat changes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../images/kff_attempt3.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="Third attempt"><img src="../../images/kff_attempt3.jpg" class="img-fluid figure-img" alt="Third attempt"></a></p>
+<p><a href="../../images/kff_attempt3.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4" title="Third attempt"><img src="../../images/kff_attempt3.jpg" class="img-fluid figure-img" alt="Third attempt"></a></p>
 <figcaption>Third attempt</figcaption>
 </figure>
 </div>
@@ -376,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p><p>I finally gave up and tried using <a href="https://flourish.studio/">Flourish</a>, a dataviz product. I wasn’t familiar with it, but going down the rabbit hole looking for solutions, I found it recommended by an Al-Jazeera datalab journalist. Here’s the product.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../images/kff_flourish.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5" title="Using Flourish"><img src="../../images/kff_flourish.jpg" class="img-fluid figure-img" alt="Using Flourish"></a></p>
+<p><a href="../../images/kff_flourish.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5" title="Using Flourish"><img src="../../images/kff_flourish.jpg" class="img-fluid figure-img" alt="Using Flourish"></a></p>
 <figcaption>Using Flourish</figcaption>
 </figure>
 </div>
@@ -781,7 +781,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
