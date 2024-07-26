@@ -1,5 +1,5 @@
 ---
-title: "Viz-a-day-2, "
+title: "Viz-a-day-2"
 author: "Joshua Murbarger"
 date: "2024-07-25"
 categories: [news, code, analysis]

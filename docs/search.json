@@ -25,7 +25,7 @@
     "href": "blog.html",
     "title": "",
     "section": "",
-    "text": "Viz-a-day-2,\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2024\n\n\nJoshua Murbarger\n\n\n\n\n\n\n\n\n\n\n\n\nViz-a-day\n\n\n\n\n\n\n\n\n\n\n\nJul 24, 2024\n\n\nJoshua Murbarger\n\n\n\n\n\n\nNo matching items"
+    "text": "Viz-a-day-2\n\n\n\n\n\n\n\n\n\n\n\nJul 25, 2024\n\n\nJoshua Murbarger\n\n\n\n\n\n\n\n\n\n\n\n\nViz-a-day\n\n\n\n\n\n\n\n\n\n\n\nJul 24, 2024\n\n\nJoshua Murbarger\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "projects.html#transmission-line-inspector",
@@ -79,7 +79,7 @@
   {
     "objectID": "blog/day2-post/index.html",
     "href": "blog/day2-post/index.html",
-    "title": "Viz-a-day-2,",
+    "title": "Viz-a-day-2",
     "section": "",
     "text": "Day two was another horizontal percentage stacked bar. They’re trickier than they look. This one is from the NYT.\n\n\n\nOriginal\n\n\nHere’s my code. Pretty close. I need to work on font matching.\nimport pandas as pd\nimport matplotlib as mpl\nimport matplotlib.pyplot as plt\nimport numpy as np\n\ny = 0\nvery = 78\nsome = 11\nnots = 1\ndont = 10\nfig, ax = plt.subplots()\nax.broken_barh([(y, very), (very, very+some), (very+some, very+some+nots), (very+some+nots, very+some+nots+dont)], [10, 9], facecolors=('#006b91', '#529cb9', '#f7904d','#ededed'), edgecolor='white')\nax.set_ylim(-40, 50)\nax.set_xlim(0, 100)\nax.spines['left'].set_visible(False)\nax.spines['bottom'].set_visible(False)\nax.spines['top'].set_visible(False)\nax.spines['right'].set_visible(False)\nax.set_yticks([])\nax.set_xticks([])\n\nax.text(1, 11.5, \"78%\", fontsize=10, color='w', weight='bold')\nax.text(79, 11.5, \"11%\", fontsize=10, color='w', weight='bold')\n# ax.text((very+some+nots)+2, 14.5, \"1%\", fontsize=8)\nax.text(91, 11.5, \"10%\", fontsize=10, weight='bold')\nax.text(0, 20, \"Very satisfied\", fontsize=7)\nax.text(79, 20, \"Somewhat\\nsatisfied\", fontsize=7 )\nax.text(85, 7, \"Not satisfied\", fontsize=7)\nax.text(89, 9, \"|\", fontsize=4, weight='bold')\nax.text(91, 20, \"Don\\'t\\nknow\", fontsize=7)\nax.text(0, 27, \"Regardless of whom you prefer to be the nominee, how satisfied would you be\\nwith Kamala Harris as the nominee?\", fontsize=8, weight='bold')\n\nplt.show()\nWhich yielded this.\n\n\n\nFirst attempt\n\n\n\n\n\nOriginal\nFirst attempt"
   },
