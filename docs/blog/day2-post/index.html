@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Day two was another horizontal percentage stacked bar. They’re trickier than they look. This one is from the NYT.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../images/nominee.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Original"><img src="../../images/nominee.jpg" class="img-fluid figure-img" alt="Original"></a></p>
+<p><a href="../../images/nominee.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Original"><img src="../../images/nominee.jpg" class="img-fluid figure-img" alt="Original"></a></p>
 <figcaption>Original</figcaption>
 </figure>
 </div>
@@ -251,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Which yielded this.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../../images/nomala.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="First attempt"><img src="../../images/nomala.jpg" class="img-fluid figure-img" alt="First attempt"></a></p>
+<p><a href="../../images/nomala.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="First attempt"><img src="../../images/nomala.jpg" class="img-fluid figure-img" alt="First attempt"></a></p>
 <figcaption>First attempt</figcaption>
 </figure>
 </div>
@@ -651,7 +651,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":false,"selector":".lightbox","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":false});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

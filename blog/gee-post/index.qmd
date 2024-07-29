@@ -6,14 +6,13 @@ categories: [news, code, analysis]
 image: "image.jpg"
 ---
 
-In order to hone my skills at dataviz creation in matplotlib and ggplot2, I've been replicating interesting charts I see in the news. I've been noticing more horizontal stacked bar charts in articles on news sites. I'm guessing the horizontal construction plays better with screens and, if the chart is presenting minimal information, like the answer to a survey question, it breaks up or grounds the columnar format nicely. Here's an example from a recent publication from the Kaiser Family Foundation.
+Some plots are trickier than they look. In order to hone my dataviz skills in matplotlib, I've been replicating interesting charts I see in the news. I've been noticing more horizontal stacked bar charts in articles on news sites. I'm guessing the horizontal construction plays better with smaller screens and, if the chart is presenting minimal information, like the answer to a survey question, it breaks up or grounds the columnar format nicely. Here's an example from a recent publication from the Kaiser Family Foundation.
 
 ![Original](../../images/kff_original.jpg){.lightbox}
 
-
 Unfortunately, matplotlib doesn't seem play nicely with legend labeling. I spent several hours trying to tweak different forms of this chart using different tutorials. My first attempt was the following:
 
-```python
+``` python
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -71,13 +70,14 @@ def survey(results, category_names):
 survey(results, category_names)
 plt.show()
 ```
-Which yielded this. 
+
+Which yielded this.
 
 ![First attempt](../../images/kff_attempt1.jpg){.lightbox}
 
 Next, I tried
 
-```python
+``` python
 import pandas as pd
 
 # dataframe
@@ -112,13 +112,14 @@ for c in ax.containers:
     # add annotations
     ax.bar_label(c, labels=labels, weight='bold', label_type='center', padding=1, color='w')
 ```
+
 This improved the labels on the bar, but didn't help with the y-axis labels or legend mat size.
 
 ![Second attempt](../../images/kff_attempt2.jpg){.lightbox}
 
-In my final matplotlib attempt, I tried to tweak the rc_params. 
+In my final matplotlib attempt, I tried to tweak the rc_params.
 
-```python
+``` python
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -166,14 +167,16 @@ for c in ax.containers:
     ax.bar_label(c, labels=labels,label_type='center', color='w', weight='bold')
 ```
 
-Which put the y-axis labels where I wanted, but I still couldn't figure out the mat changes. 
+Which put the y-axis labels where I wanted, but I still couldn't figure out the mat changes.
 
 ![Third attempt](../../images/kff_attempt3.jpg){.lightbox}
 
 <p>
-I finally gave up and tried using [Flourish](https://flourish.studio/), a dataviz product. I wasn't familiar with it, but going down the rabbit hole looking for solutions, I found it recommended by an Al-Jazeera datalab journalist. Here's the product. 
+
+I finally gave up and tried using [Flourish](https://flourish.studio/), a dataviz product. I wasn't familiar with it, but going down the rabbit hole looking for solutions, I found it recommended by an Al-Jazeera datalab journalist. Here's the product.
 
 ![Using Flourish](../../images/kff_flourish.jpg){.lightbox}
 
 <p>
+
 Later, I'll see if I can learn more fixing those legend values.

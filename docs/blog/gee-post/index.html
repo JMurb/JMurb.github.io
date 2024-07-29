@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In order to hone my skills at dataviz creation in matplotlib and ggplot2, I’ve been replicating interesting charts I see in the news. I’ve been noticing more horizontal stacked bar charts in articles on news sites. I’m guessing the horizontal construction plays better with screens and, if the chart is presenting minimal information, like the answer to a survey question, it breaks up or grounds the columnar format nicely. Here’s an example from a recent publication from the Kaiser Family Foundation.</p>
+<p>Some plots are trickier than they look. In order to hone my dataviz skills in matplotlib, I’ve been replicating interesting charts I see in the news. I’ve been noticing more horizontal stacked bar charts in articles on news sites. I’m guessing the horizontal construction plays better with smaller screens and, if the chart is presenting minimal information, like the answer to a survey question, it breaks up or grounds the columnar format nicely. Here’s an example from a recent publication from the Kaiser Family Foundation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="../../images/kff_original.jpg" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1" title="Original"><img src="../../images/kff_original.jpg" class="img-fluid figure-img" alt="Original"></a></p>
@@ -781,7 +781,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
