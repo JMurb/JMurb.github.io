@@ -9,7 +9,7 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/joshua-murbarger-439962225/
+      href: https://www.linkedin.com/in/jmurb
     - icon: github
       text: Github
       href: https://github.com/JMurb

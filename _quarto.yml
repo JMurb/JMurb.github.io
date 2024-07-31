@@ -6,7 +6,7 @@ website:
   title: ""
   navbar: 
     left:
-      - text: "-"
+      - text: About
         href: index.qmd
       - text: Projects
         href: projects.qmd
@@ -14,14 +14,14 @@ website:
         href: resume.qmd
       # - text: Blog
       #   href: blog.qmd
-      - text: About
-        href: index.qmd
+
         
     right:
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/JMurb
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jmurb
+
 format:
   html:
     theme: cosmo
