@@ -12,7 +12,7 @@
 :::
 
 ::: {.column width="55%"}
-I made a dynamic map with javascript and D3 to show 17 years of net annual and total population change due to interstate migration using ACS estimates. It is modeled after project by Connor Rothschild.[*- link-*](https://jmurb.github.io/interstate/){target="_blank"}
+I made a dynamic map with javascript and D3 to show 17 years of net annual and total population change due to interstate migration using ACS estimates.[*- link-*](https://jmurb.github.io/interstate/){target="_blank"}
 :::
 :::
 
