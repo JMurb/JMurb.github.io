@@ -102,6 +102,6 @@
     "href": "projects.html#interstate-migration-flows",
     "title": "",
     "section": "Interstate Migration Flows",
-    "text": "Interstate Migration Flows\n\n\n\n\n\n\nTo interrogate a narrative that Americans are fleeing certain states due to political climate or tax status, I made a dynamic map with javascript and D3 to show 17 years of net annual and total percentage population change due to interstate migration using ACS estimates. The total net population change due to migration after 17 years is displayed in a tooltip. - link-"
+    "text": "Interstate Migration Flows\n\n\n\n\n\n\nTo interrogate a narrative that Americans are fleeing certain states due to political climate or tax status, I made a dynamic map with javascript and D3 to show 17 years of net annual and total percentage population change due to interstate migration using ACS estimates. The total net population change due to migration after 17 years is displayed in a tooltip. I recorded an Excel macro to munge the data inside the ACS provided spreadsheet. - link-"
   }
 ]

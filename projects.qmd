@@ -12,7 +12,7 @@
 :::
 
 ::: {.column width="55%"}
-To interrogate a narrative that Americans are fleeing certain states due to political climate or tax status, I made a dynamic map with javascript and D3 to show 17 years of net annual and total percentage population change due to interstate migration using ACS estimates. The total net population change due to migration after 17 years is displayed in a tooltip. [*- link-*](https://jmurb.github.io/interstate/){target="_blank"}
+To interrogate a narrative that Americans are fleeing certain states due to political climate or tax status, I made a dynamic map with javascript and D3 to show 17 years of net annual and total percentage population change due to interstate migration using ACS estimates. The total net population change due to migration after 17 years is displayed in a tooltip. I recorded an Excel macro to munge the data inside the ACS provided spreadsheet.  [*- link-*](https://jmurb.github.io/interstate/){target="_blank"}
 :::
 :::
 
