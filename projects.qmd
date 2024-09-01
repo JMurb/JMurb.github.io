@@ -12,7 +12,7 @@
 :::
 
 ::: {.column width="55%"}
-To interrogate a narrative that Americans are fleeing certain states due to political climate or tax status, I made a dynamic map with javascript and D3 to show 17 years of net annual and total percentage population change due to interstate migration using ACS estimates. The total net population change due to migration after 17 years is displayed in a tooltip. I recorded an Excel macro to munge the data inside the ACS provided spreadsheet.  [*- link-*](https://jmurb.github.io/interstate/){target="_blank"}
+To interrogate a narrative that Americans are fleeing certain states due to political climate or tax status, I made a dynamic map with javascript and D3 to show 17 years of net annual and total percentage population change due to interstate migration using the Census Bureau's American Community Survey migration flow estimates. The total net population change due to migration after 17 years is displayed in a tooltip. I recorded an Excel macro to munge the data inside the ACS provided spreadsheets.  [*- link-*](https://jmurb.github.io/interstate/){target="_blank"}
 :::
 :::
 
@@ -50,7 +50,7 @@ In GIS App Development, our two-person team built a tool to score proposed congr
 
 ::: columns
 ::: {.column width="55%"}
-I studied the effects of an "atmospheric river" in early 2023 that left at least 23 people dead in California. The analysis was conducted using Python, geemap, and jupyter notebook. Normalized Difference Water Index (NDWI) using LANDSAT imagery and Synthetic Aperture Radar (SAR) data from Sentinel-1 were used to calculate standing water left by the event. <!-- [*- link -*](/posts/gee-post/){target="_blank"} -->
+I studied the effects of an "atmospheric river" in early 2023 that left at least 23 people dead in California. The analysis was conducted using Python, Google Earth Engine, the geemap module, and jupyter notebooks. Normalized Difference Water Index (NDWI) using LANDSAT imagery and Synthetic Aperture Radar (SAR) data from Sentinel-1 were used to calculate standing water left by the event. <!-- [*- link -*](/posts/gee-post/){target="_blank"} -->
 :::
 
 ::: {.column width="5%"}
@@ -80,7 +80,7 @@ I created satellite imagery labels and and trained a machine learning model to c
 
 ::: columns
 ::: {.column width="55%"}
-In another analysis, I looked for correlations between the number of building renovation permits filed with the Bureau of Licenses and Inspections and the frequency of reported property crimes in several South Philadelphia neighborhoods. I was interested to see whether permits could be used as a leading indicator. <!-- [*- link -*](/posts/gee-post/){target="_blank"} -->
+In another analysis, I looked for correlations between the number of building renovation permits filed with Philadelphia's Department of Licenses and Inspections and the frequency of reported property crimes in several South Philadelphia neighborhoods. I was interested to see whether new permit filing for residential construction and renovation associated with gentrification could be used as a leading indicator of crime reports. <!-- [*- link -*](/posts/gee-post/){target="_blank"} -->
 :::
 
 ::: {.column width="5%"}
