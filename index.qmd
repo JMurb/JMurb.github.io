@@ -18,7 +18,4 @@ about:
       href: mailto:joshua.murbarger@gmail.com
 ---
 
-I'm a candidate in the Master's program in Geospatial Data Science at Temple University.\
-
-This is my portfolio.\
-It is under construction.
+GIS and Business Intel Developer @ City of Philadelphia. Master's - Geospatial Data Science at Temple'24.\
